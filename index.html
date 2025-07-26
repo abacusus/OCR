@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>OCR.space API Example</title>
+  <title>OCR.space </title>
   <style>
     #dropzone {
       border: 2px dashed #555;
@@ -47,7 +47,7 @@
     }
   }
 
-  // Convert image to Base64
+  //  image to Base64
   function convertToBase64(file) {
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -56,13 +56,12 @@
     reader.readAsDataURL(file);
   }
 
-  // Handle file input
-  fileInput.addEventListener('change', (e) => {
+    fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) convertToBase64(file);
   });
 
-  // Handle drag and drop
+  
   ['dragenter', 'dragover'].forEach(evt =>
     dropzone.addEventListener(evt, e => e.preventDefault(), false)
   );
