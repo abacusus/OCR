@@ -75,19 +75,20 @@
 
     // Field Extraction
     const dob = text.match(/DOB[:\s]+(.+)/i)?.[1]?.trim();
-    const email = text.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0];
+
     const phone = text.match(/(?:Phone|Mobile|Ph)[:\s]*([0-9\-\+\s]{7,})/i)?.[1]?.trim();
-    const amount = text.match(/(?:Total|Amount)[:\s₹$]*([\d,]+(?:\.\d{2})?)/i)?.[1];
+
     const twoWords = text.match(/\b[A-Za-z]+\s+[A-Za-z]+\b/g) || [];
-    const twelveDigitNumbers = text.match(/\b\d{12}\b/g) || [];
+    const twelveDigitNumbers = text.match(/\b(?:\d{4}\s*){3}\b/g) || [];
+
     const gender = text.match(/\b(Male|Female)\b/i)?.[1] || 'Not found';
 
     const extractedFields = {
       DOB: dob || 'Not found',
-      Email: email || 'Not found',
+     
       Phone: phone || 'Not found',
-      Amount: amount || 'Not found',
-      Two_Word_Phrases: twoWords.slice(0, 5), // limit examples
+
+      Name: twoWords.slice(0, 5), // limit examples
       Twelve_Digit_Numbers: twelveDigitNumbers,
       Gender: gender
     };
